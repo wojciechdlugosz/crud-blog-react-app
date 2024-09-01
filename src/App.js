@@ -6,18 +6,25 @@ import PostAdd from './components/pages/PostAdd/PostAdd';
 import PostEdit from './components/pages/PostEdit/PostEdit';
 
 import { Routes, Route } from 'react-router-dom';
+import Header from './components/views/Header/Header';
+import Footer from './components/views/Footer/Footer';
+import { Container } from 'react-bootstrap';
 
 const App = () => {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/post/:id" element={<Post />} />
-        <Route path="/post/add" element={<PostAdd />} />
-        <Route path="/post/edit/:id" element={<PostEdit />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Container>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/post/:id" element={<Post />} />
+          <Route path="/post/add" element={<PostAdd />} />
+          <Route path="/post/edit/:id" element={<PostEdit />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </Container>
     </div>
   );
 };
