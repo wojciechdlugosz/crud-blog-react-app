@@ -36,6 +36,7 @@ const Post = () => {
             <Card.Text className="mb-1"><b>Author: </b>{postData.author}</Card.Text>
             <Card.Text><b>Published: </b>{postData.publishedDate}</Card.Text>
             <Card.Text>{postData.shortDescription}</Card.Text>
+            <Card.Text>{postData.content}</Card.Text>
         </Card>
 
         <DeleteModal showModal={showModal} handleClose={() => setShowModal(false)} id={postData.id} />
