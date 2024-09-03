@@ -65,7 +65,7 @@ const PostForm = ({ action, actionText, ...props }) => {
         <Form.Group className="mb-3" controlId="formPublishedDate">
             <Form.Label>Published</Form.Label>
             <Form.Control 
-                type="date" 
+                type="text"
                 placeholder="Enter date" 
                 name="publishedDate" 
                 value={publishedDate}
@@ -104,7 +104,7 @@ PostForm.propTypes = {
     actionText: PropTypes.string.isRequired,
     title: PropTypes.string,
     author: PropTypes.string,
-    publishedDate: PropTypes.instanceOf(Date),
+    publishedDate: PropTypes.string,
     shortDescription: PropTypes.string,
     content: PropTypes.string,
 };
