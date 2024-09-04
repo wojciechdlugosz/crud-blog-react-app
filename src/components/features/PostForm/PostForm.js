@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -17,29 +19,6 @@ const PostForm = ({ action, actionText, ...props }) => {
         action({ title, author, publishedDate, shortDescription, content })
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        switch (name) {
-            case 'title':
-                setTitle(value);
-                break;
-            case 'author':
-                setAuthor(value);
-                break;
-            case 'publishedDate':
-                setPublishedDate(value);
-                break;
-            case 'shortDescription':
-                setShortDescription(value);
-                break;
-            case 'content':
-                setContent(value);
-                break;
-            default:
-                break;
-        }
-    };
-
     return (
         <Form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: '40%' }}>
         <Form.Group className="mb-3" controlId="formTitle">
@@ -49,7 +28,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                 placeholder="Enter title" 
                 name="title" 
                 value={title}
-                onChange={handleInputChange} 
+                onChange={e => setTitle(e.target.value)}
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formAuthor">
@@ -59,7 +38,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                 placeholder="Enter author" 
                 name="author" 
                 value={author}
-                onChange={handleInputChange} 
+                onChange={e => setAuthor(e.target.value)} 
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPublishedDate">
@@ -69,7 +48,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                 placeholder="Enter date" 
                 name="publishedDate" 
                 value={publishedDate}
-                onChange={handleInputChange} 
+                onChange={e => setPublishedDate(e.target.value)} 
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formShortDescription">
@@ -80,18 +59,17 @@ const PostForm = ({ action, actionText, ...props }) => {
                 placeholder="Leave a comment here" 
                 name="shortDescription" 
                 value={shortDescription}
-                onChange={handleInputChange} 
+                onChange={e => setShortDescription(e.target.value)} 
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formMainContent">
             <Form.Label>Main content</Form.Label>
-            <Form.Control 
-                className="pb-5" 
-                as="textarea" 
+            <ReactQuill
+                theme="snow" 
                 placeholder="Leave a comment here" 
                 name="content"
                 value={content} 
-                onChange={handleInputChange} 
+                onChange={setContent} 
             />
         </Form.Group>
         <Button variant="primary" type="submit">{actionText}</Button>
