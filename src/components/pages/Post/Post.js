@@ -3,6 +3,7 @@ import { useParams, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import dateToStr from "../../../utils/dateToStr";
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -34,7 +35,7 @@ const Post = () => {
                 </div>
             </div>
             <Card.Text className="mb-1"><b>Author: </b>{postData.author}</Card.Text>
-            <Card.Text><b>Published: </b>{postData.publishedDate}</Card.Text>
+            <Card.Text><b>Published: </b>{dateToStr(postData.publishedDate)}</Card.Text>
             <Card.Text>{postData.shortDescription}</Card.Text>
             <Card.Text><p dangerouslySetInnerHTML={{ __html: postData.content }} /></Card.Text>
         </Card>
