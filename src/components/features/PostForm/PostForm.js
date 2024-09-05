@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { getAllCategories } from '../../../redux/categoriesRedux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ReactQuill from 'react-quill';
@@ -9,6 +11,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const PostForm = ({ action, actionText, ...props }) => {
+
+    const categories = useSelector(getAllCategories);
+    console.log(categories);
 
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
@@ -19,9 +24,12 @@ const PostForm = ({ action, actionText, ...props }) => {
     const [content, setContent] = useState(props.content || '');
     const [contentError, setContentError] = useState(false);
     const [dateError, setDateError] = useState(false);
+    const [category, setCategory] = useState('');
+
 
     const handleSubmit = () => {
         setContentError(!content)
+        console.log(content);
         setDateError(!publishedDate)
         if(content && publishedDate) {
             action({ title, author, publishedDate, shortDescription, content })
@@ -60,6 +68,15 @@ const PostForm = ({ action, actionText, ...props }) => {
                 onChange={(date) => setPublishedDate(date)} 
             />
             {dateError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
+        </Form.Group>
+        <Form.Group>
+            <Form.Label>Category</Form.Label>
+            <Form.Select onChange={(e) => setCategory(e.target.value)}>
+                <option>Select category...</option>
+                {categories.map(({ id, title }) => (
+                    <option key={id} value={title}>{title}</option>
+                ))}
+            </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formShortDescription">
             <Form.Label>Short description</Form.Label>

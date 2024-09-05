@@ -32,6 +32,21 @@ const initialState = {
             publishedDate: new Date('07-12-2007'),
             author: 'Angelina Jolie'
         }
+    ],
+
+    categories: [
+        {
+            id: '1',
+            title: 'Sport'
+        },
+        {
+            id: '2',
+            title: 'News'
+        },
+        {
+            id: '3',
+            title: 'Movies'
+        }
     ]
 };
 
