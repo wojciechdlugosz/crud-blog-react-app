@@ -119,6 +119,7 @@ PostForm.propTypes = {
     publishedDate: PropTypes.string,
     shortDescription: PropTypes.string,
     content: PropTypes.string,
+    category: PropTypes.string,
 };
 
 export default PostForm;

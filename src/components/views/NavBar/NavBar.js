@@ -8,6 +8,7 @@ const NavBar = () => {
             <Navbar.Brand className="me-auto mx-2">Blog.app</Navbar.Brand>
             <Nav className="ms-auto mx-2">
                 <Nav.Item><Nav.Link as={NavLink} to="/">Home</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link as={NavLink} to="/categories">Categories</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link as={NavLink} to="/about">About</Nav.Link></Nav.Item>
             </Nav>
         </Navbar>
