@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import dateToStr from '../../../utils/dateToStr';
 
-import { getAllPosts } from '../../../redux/postsRedux';
+import { getAllPosts, getPostByCategory } from '../../../redux/postsRedux';
 
-const PostBox = () => {
+const PostBox = ({ categoryId }) => {
 
-    const posts = useSelector(getAllPosts);
+    const posts = useSelector(categoryId ? (state) => getPostByCategory(state, categoryId) : getAllPosts);
 
     return (
         <Row className="mx-1" xs={1} sm={2} md={3}>

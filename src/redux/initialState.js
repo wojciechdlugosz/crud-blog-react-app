@@ -40,15 +40,15 @@ const initialState = {
 
     categories: [
         {
-            id: '1',
+            id: 'sport',
             title: 'Sport'
         },
         {
-            id: '2',
+            id: 'news',
             title: 'News'
         },
         {
-            id: '3',
+            id: 'movies',
             title: 'Movies'
         }
     ]
