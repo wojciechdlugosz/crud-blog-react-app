@@ -14,12 +14,13 @@ const PostBox = () => {
 
     return (
         <Row className="mx-1" xs={1} sm={2} md={3}>
-        {posts.map(({ id, title, author, publishedDate, shortDescription }) => (
+        {posts.map(({ id, title, author, publishedDate, shortDescription, category }) => (
             <Card key={id}>
                 <Card.Body>
                     <Card.Title className="mb-3">{title}</Card.Title>
                     <Card.Text className="mb-1"><b>Author: </b>{author}</Card.Text>
-                    <Card.Text><b>Published: </b>{dateToStr(publishedDate)}</Card.Text>
+                    <Card.Text className="mb-1"><b>Published: </b>{dateToStr(publishedDate)}</Card.Text>
+                    <Card.Text><b>Category: </b>{category}</Card.Text>
                     <Card.Text>{shortDescription}</Card.Text>
                     <Link to={`/post/${id}`}>
                         <Button variant="primary">Read more</Button>
